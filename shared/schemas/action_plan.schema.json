@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "action_plan.schema.json",
+  "title": "ActionPlan (server -> extension)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["protocol_version", "snapshot_id", "actions", "done"],
+  "properties": {
+    "protocol_version": { "const": "1.0" },
+    "snapshot_id": { "type": "string", "pattern": "^snap_[0-9]+$" },
+    "thought": { "type": "string" },
+    "actions": {
+      "type": "array", "maxItems": 10,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["type"],
+        "properties": {
+          "type": { "enum": ["click", "type", "select", "scroll", "wait", "ask_user", "answer"] },
+          "target": { "type": "string", "pattern": "^el_[0-9]+$" },
+          "value": { "type": "string" },
+          "direction": { "enum": ["up", "down"] },
+          "amount": { "type": "integer", "minimum": 1, "maximum": 2000 },
+          "ms": { "type": "integer", "minimum": 1, "maximum": 3000 },
+          "question": { "type": "string" },
+          "text": { "type": "string" }
+        }
+      }
+    },
+    "needs_user_confirmation": { "type": "boolean" },
+    "done": { "type": "boolean" },
+    "answer": { "type": ["string", "null"] }
+  }
+}

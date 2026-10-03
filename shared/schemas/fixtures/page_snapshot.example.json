@@ -1,0 +1,18 @@
+{
+  "protocol_version": "1.0",
+  "snapshot_id": "snap_001",
+  "url": "http://localhost:5500/signup.html?ref=priya.sharma@gmail.com",
+  "title": "Create your account",
+  "viewport": { "w": 1280, "h": 720 },
+  "scroll": { "y": 0, "max_y": 120 },
+  "dpr": 1.25,
+  "elements": [
+    { "id": "el_1", "tag": "input", "type": "text", "name": "full_name", "label": "Full name", "value": "Priya Sharma", "autocomplete": "name", "required": true, "rect": [420, 210, 440, 38] },
+    { "id": "el_2", "tag": "input", "type": "email", "name": "email", "label": "Email address", "value": "priya.sharma@gmail.com", "autocomplete": "email", "required": true, "rect": [420, 280, 440, 38] },
+    { "id": "el_3", "tag": "input", "type": "password", "name": "password", "label": "Password", "value": "Hunter2!secret", "autocomplete": "new-password", "required": true, "rect": [420, 350, 440, 38] },
+    { "id": "el_4", "tag": "button", "type": "submit", "text": "Create account", "required": false, "rect": [420, 430, 440, 42] }
+  ],
+  "text_blocks": [
+    { "id": "tb_1", "text": "Welcome back, Priya Sharma. We will text +91 98765 43210 to verify.", "rect": [420, 150, 440, 40] }
+  ]
+}

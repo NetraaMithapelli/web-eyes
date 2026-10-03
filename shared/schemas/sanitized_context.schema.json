@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "sanitized_context.schema.json",
+  "title": "SanitizedContext (extension -> server). additionalProperties=false so a raw field can never slip in by accident.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["protocol_version", "session_id", "snapshot_id", "step", "goal", "page", "elements", "text_blocks"],
+  "properties": {
+    "protocol_version": { "const": "1.0" },
+    "session_id": { "type": "string" },
+    "snapshot_id": { "type": "string", "pattern": "^snap_[0-9]+$" },
+    "step": { "type": "integer", "minimum": 1 },
+    "goal": { "type": "string" },
+    "page": {
+      "type": "object", "additionalProperties": false,
+      "required": ["origin", "path", "title", "viewport", "scroll"],
+      "properties": {
+        "origin": { "type": "string" },
+        "path": { "type": "string", "not": { "pattern": "[?#]" } },
+        "title": { "type": "string" },
+        "viewport": { "type": "object", "required": ["w", "h"], "additionalProperties": false,
+          "properties": { "w": { "type": "integer" }, "h": { "type": "integer" } } },
+        "scroll": { "type": "object", "required": ["y", "max_y"], "additionalProperties": false,
+          "properties": { "y": { "type": "integer" }, "max_y": { "type": "integer" } } }
+      }
+    },
+    "elements": {
+      "type": "array",
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["id", "tag"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^el_[0-9]+$" },
+          "tag": { "type": "string" },
+          "type": { "type": ["string", "null"] },
+          "label": { "type": ["string", "null"] },
+          "text": { "type": ["string", "null"] },
+          "value": { "type": ["string", "null"] },
+          "required": { "type": "boolean" }
+        }
+      }
+    },
+    "text_blocks": {
+      "type": "array",
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["id", "text"],
+        "properties": { "id": { "type": "string" }, "text": { "type": "string" } }
+      }
+    },
+    "screenshot": {
+      "type": ["object", "null"], "additionalProperties": false,
+      "required": ["mime", "b64"],
+      "properties": {
+        "mime": { "enum": ["image/jpeg", "image/webp", "image/png"] },
+        "b64": { "type": "string" },
+        "redactions": {
+          "type": "array",
+          "items": { "type": "object", "additionalProperties": false,
+            "required": ["type", "placeholder", "box"],
+            "properties": {
+              "type": { "type": "string" },
+              "placeholder": { "type": "string", "pattern": "^\\[[A-Z]+_[0-9]+\\]$" },
+              "box": { "type": "array", "items": { "type": "integer" }, "minItems": 4, "maxItems": 4 }
+            } }
+        }
+      }
+    },
+    "redaction_summary": { "type": "object", "additionalProperties": { "type": "integer" } },
+    "vault_fields_available": { "type": "array", "items": { "type": "string", "pattern": "^[A-Z]+_[0-9]+$" } }
+  }
+}

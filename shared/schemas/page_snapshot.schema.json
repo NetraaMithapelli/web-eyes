@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "page_snapshot.schema.json",
+  "title": "PageSnapshot (RAW - never leaves the browser)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["protocol_version", "snapshot_id", "url", "title", "viewport", "scroll", "dpr", "elements", "text_blocks"],
+  "properties": {
+    "protocol_version": { "const": "1.0" },
+    "snapshot_id": { "type": "string", "pattern": "^snap_[0-9]+$" },
+    "url": { "type": "string" },
+    "title": { "type": "string" },
+    "viewport": { "$ref": "#/$defs/viewport" },
+    "scroll": { "$ref": "#/$defs/scroll" },
+    "dpr": { "type": "number", "exclusiveMinimum": 0 },
+    "elements": { "type": "array", "items": { "$ref": "#/$defs/element" } },
+    "text_blocks": { "type": "array", "items": { "$ref": "#/$defs/text_block" } }
+  },
+  "$defs": {
+    "viewport": { "type": "object", "required": ["w", "h"], "additionalProperties": false,
+      "properties": { "w": { "type": "integer" }, "h": { "type": "integer" } } },
+    "scroll": { "type": "object", "required": ["y", "max_y"], "additionalProperties": false,
+      "properties": { "y": { "type": "integer" }, "max_y": { "type": "integer" } } },
+    "rect": { "type": "array", "items": { "type": "number" }, "minItems": 4, "maxItems": 4,
+      "description": "[x, y, width, height] in CSS pixels" },
+    "element": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "tag", "rect"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^el_[0-9]+$" },
+        "tag": { "type": "string" },
+        "type": { "type": ["string", "null"] },
+        "name": { "type": ["string", "null"] },
+        "label": { "type": ["string", "null"] },
+        "text": { "type": ["string", "null"] },
+        "value": { "type": ["string", "null"] },
+        "placeholder": { "type": ["string", "null"] },
+        "autocomplete": { "type": ["string", "null"] },
+        "required": { "type": "boolean" },
+        "rect": { "$ref": "#/$defs/rect" }
+      }
+    },
+    "text_block": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "text", "rect"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^tb_[0-9]+$" },
+        "text": { "type": "string" },
+        "rect": { "$ref": "#/$defs/rect" }
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "protocol_version": "1.0",
+  "session_id": "s_demo01",
+  "snapshot_id": "snap_001",
+  "step": 1,
+  "goal": "Sign me up using my saved details",
+  "page": {
+    "origin": "http://localhost:5500",
+    "path": "/signup.html",
+    "title": "Create your account",
+    "viewport": { "w": 1280, "h": 720 },
+    "scroll": { "y": 0, "max_y": 120 }
+  },
+  "elements": [
+    { "id": "el_1", "tag": "input", "type": "text", "label": "Full name", "value": "[PERSON_1]", "required": true },
+    { "id": "el_2", "tag": "input", "type": "email", "label": "Email address", "value": "[EMAIL_1]", "required": true },
+    { "id": "el_3", "tag": "input", "type": "password", "label": "Password", "value": "[PASSWORD_1]", "required": true },
+    { "id": "el_4", "tag": "button", "type": "submit", "text": "Create account", "required": false }
+  ],
+  "text_blocks": [
+    { "id": "tb_1", "text": "Welcome back, [PERSON_1]. We will text [PHONE_1] to verify." }
+  ],
+  "screenshot": null,
+  "redaction_summary": { "PERSON": 1, "EMAIL": 1, "PASSWORD": 1, "PHONE": 1 },
+  "vault_fields_available": ["PERSON_1", "EMAIL_1", "PHONE_1"]
+}

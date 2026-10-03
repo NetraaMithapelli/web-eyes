@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Checkout</title>
+<link rel="stylesheet" href="styles.css"></head>
+<body>
+<header>ShopEasy: Checkout</header>
+<main>
+  <h1>Checkout</h1>
+  <div class="summary">Order #48213: Wireless headphones x1, total Rs. 3,499. Ship to: Priya Sharma, 14 MG Road, Pune 411001. Contact: priya.sharma@gmail.com</div>
+  <form onsubmit="event.preventDefault(); document.getElementById('paid').hidden = false;">
+    <label for="name">Name on card</label>
+    <input id="name" name="cc-name" type="text" value="Priya Sharma" autocomplete="cc-name">
+    <label for="addr">Delivery address</label>
+    <input id="addr" name="address" type="text" value="14 MG Road, Pune 411001" autocomplete="street-address">
+    <label for="card">Card number</label>
+    <input id="card" name="cardnumber" type="text" value="4111 1111 1111 1111" inputmode="numeric" autocomplete="cc-number" placeholder="4111 1111 1111 1111">
+    <div class="row">
+      <div><label for="exp">Expiry</label><input id="exp" name="exp" type="text" value="08/29" autocomplete="cc-exp" placeholder="MM/YY"></div>
+      <div><label for="cvv">CVV</label><input id="cvv" name="cvv" type="password" value="123" autocomplete="cc-csc"></div>
+    </div>
+    <label for="pan">PAN (for invoice)</label>
+    <input id="pan" name="pan" type="text" value="ABCDE1234F" placeholder="ABCDE1234F">
+    <button type="submit">Pay Rs. 3,499</button>
+  </form>
+  <p id="paid" hidden style="color:#2e7d32;font-weight:600">Payment simulated. Nothing was charged.</p>
+</main>
+</body></html>

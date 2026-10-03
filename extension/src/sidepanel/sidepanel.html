@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Privacy Agent</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 0; padding: 14px; color: #1f2937; }
+    h1 { font-size: 16px; margin: 0 0 4px; }
+    p.sub { margin: 0 0 12px; font-size: 12px; color: #607d8b; }
+    button { display: block; width: 100%; margin: 6px 0; padding: 9px; border: 0; border-radius: 6px;
+             background: #1565c0; color: #fff; font-size: 13px; cursor: pointer; }
+    button:hover { background: #0d47a1; }
+    pre { background: #f3f4f6; padding: 10px; border-radius: 6px; font-size: 11px;
+          white-space: pre-wrap; word-break: break-word; max-height: 55vh; overflow: auto; }
+  </style>
+</head>
+<body>
+  <h1>Privacy Agent</h1>
+  <p class="sub">Phase 1: skeleton check</p>
+  <button id="ping">1. Ping current page</button>
+  <button id="server">2. Call server (/plan)</button>
+  <pre id="out">Click a button to test the plumbing.</pre>
+  <script src="sidepanel.js"></script>
+</body>
+</html>

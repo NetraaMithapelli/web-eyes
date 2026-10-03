@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "Privacy Agent",
+  "version": "0.1.0",
+  "description": "Privacy-preserving browser agent: redacts PII on-device before any LLM call.",
+  "permissions": ["activeTab", "sidePanel", "scripting", "tabs", "storage"],
+  "host_permissions": ["<all_urls>"],
+  "background": { "service_worker": "background.js" },
+  "content_scripts": [
+    { "matches": ["<all_urls>"], "js": ["content.js"], "run_at": "document_idle" }
+  ],
+  "side_panel": { "default_path": "sidepanel.html" },
+  "action": { "default_title": "Open Privacy Agent" }
+}

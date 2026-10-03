@@ -1,0 +1,17 @@
+* { box-sizing: border-box; }
+body { font-family: system-ui, -apple-system, Segoe UI, sans-serif; background: #f4f6f8; margin: 0; color: #1f2937; }
+header { background: #0d47a1; color: #fff; padding: 14px 28px; font-weight: 600; }
+main { max-width: 520px; margin: 32px auto; background: #fff; padding: 28px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,.08); }
+main.wide { max-width: 760px; }
+h1 { font-size: 22px; margin: 0 0 6px; }
+p.hint { color: #607d8b; font-size: 14px; margin: 0 0 18px; }
+label { display: block; font-size: 13px; font-weight: 600; margin: 14px 0 4px; }
+input, select { width: 100%; padding: 10px; border: 1px solid #b0bec5; border-radius: 6px; font-size: 14px; }
+.row { display: flex; gap: 12px; } .row > div { flex: 1; }
+button { margin-top: 22px; width: 100%; padding: 12px; border: 0; border-radius: 6px; background: #1565c0; color: #fff; font-size: 15px; cursor: pointer; }
+.summary { background: #f3f4f6; padding: 12px 14px; border-radius: 8px; font-size: 14px; margin-bottom: 8px; }
+.mail { display: flex; gap: 14px; padding: 14px 4px; border-bottom: 1px solid #e0e6ea; align-items: flex-start; }
+.mail img { width: 44px; height: 44px; border-radius: 50%; }
+.mail .who { font-weight: 600; font-size: 14px; } .mail .meta { color: #607d8b; font-size: 12px; }
+.mail .body { font-size: 13px; margin-top: 4px; }
+.tag { display: inline-block; background: #ffebee; color: #c62828; font-size: 11px; padding: 2px 8px; border-radius: 10px; margin-left: 6px; }

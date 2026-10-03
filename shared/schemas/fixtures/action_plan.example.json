@@ -1,0 +1,13 @@
+{
+  "protocol_version": "1.0",
+  "snapshot_id": "snap_001",
+  "thought": "The form needs name and email, then submit.",
+  "actions": [
+    { "type": "type", "target": "el_1", "value": "[PERSON_1]" },
+    { "type": "type", "target": "el_2", "value": "[EMAIL_1]" },
+    { "type": "click", "target": "el_4" }
+  ],
+  "needs_user_confirmation": true,
+  "done": false,
+  "answer": null
+}
